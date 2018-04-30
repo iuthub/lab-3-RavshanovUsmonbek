@@ -23,6 +23,13 @@
 				<li class="mp3item">
 					<a href= "<?= $song ?>"><?= basename($song)?></a>
 				</li>
+				<?php } 
+				$files=glob("webpage/songs/*.txt");
+				foreach ($files as $file) {
+				?>
+				<li class="playlistitem">
+					<a href="<?= $file ?>" download><?= basename($file)?></a>
+				</li>
 				<?php } ?>
 			</ul>
 		</div>
