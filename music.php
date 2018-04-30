@@ -17,20 +17,33 @@
 		<div id="listarea">
 			<ul id="musiclist">
 				<?php
-			 	$songs=glob("webpage/songs/*.mp3");
+				if(!isset($_REQUEST["playlist"]))
+			 	{
+			 		$songs=glob("webpage/songs/*.mp3");
+					$files=glob("webpage/songs/*.txt");
+				}
+				else {
+					$playlist="webpage/songs/".urldecode($_REQUEST["playlist"]);
+					$songs=file($playlist);
+					for ($i=0; $i < count($songs); $i++) { 
+						$songs[$i]="webpage/songs/".$songs[$i];
+					}
+					$files=NULL;
+				}
 				foreach ( $songs as $song) {
 				?>
 				<li class="mp3item">
-					<a href= "<?= $song ?>"><?= basename($song)?></a>
+					<a href= "<?= $song ?>"><?=basename($song)?></a>
 				</li>
 				<?php } 
-				$files=glob("webpage/songs/*.txt");
+				if(isset($files)){
 				foreach ($files as $file) {
 				?>
 				<li class="playlistitem">
-					<a href="<?= $file ?>" download><?= basename($file)?></a>
+					<a href="<?= $file ?>"><?= basename($file)?></a>
 				</li>
-				<?php } ?>
+				<?php } 
+			} ?>
 			</ul>
 		</div>
 	</body>
