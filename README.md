@@ -1,6 +1,6 @@
 # Lab 3
 ## Student Details
 
-- **U1610250**: your studentID
-- **Usmonbek Ravshanov**: your name
-- **003**: your course section number
+- **U1610250**: studentID
+- **Usmonbek Ravshanov**: name
+- **003**: course section number
